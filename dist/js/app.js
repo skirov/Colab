@@ -3,12 +3,6 @@
  * Main JS application file for Colab v2. This file
  * should be included in all pages. It controls some layout
  * options and implements exclusive Colab plugins.
- *
- * @Author  Almsaeed Studio
- * @Support <http://www.almsaeedstudio.com>
- * @Email   <support@almsaeedstudio.com>
- * @version 2.1.0
- * @license MIT <http://opensource.org/licenses/MIT>
  */
 
 'use strict';

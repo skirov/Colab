@@ -2799,7 +2799,7 @@ table.text-center th {
  * ---------------------
  */
 .users-list > li {
-  width: 25%;
+  width: 7%;
   float: left;
   padding: 10px;
   text-align: center;
@@ -3957,6 +3957,7 @@ fieldset[disabled] .btn-vk.active {
 .label-info,
 .label-waring,
 .label-primary,
+.label-testing,
 .label-success,
 .modal-primary .modal-body,
 .modal-primary .modal-header,
@@ -4004,7 +4005,8 @@ fieldset[disabled] .btn-vk.active {
 .modal-info .modal-body {
   background-color: #00c0ef !important;
 }
-.bg-blue {
+.bg-blue,
+.label-testing {
   background-color: #0073b7 !important;
 }
 .bg-light-blue,
