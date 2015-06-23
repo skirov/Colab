@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Colab.Models
+﻿namespace Colab.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class Team
     {
         private ICollection<User> members;
-
         private ICollection<Issue> issues;
 
         public Team()
@@ -18,6 +14,7 @@ namespace Colab.Models
             this.issues = new HashSet<Issue>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -30,15 +27,14 @@ namespace Colab.Models
 
         public virtual ICollection<Issue> Issues
         {
-            get { return issues; }
-            set { issues = value; }
+            get { return this.issues; }
+            set { this.issues = value; }
         }
 
         public virtual ICollection<User> Members
         {
-            get { return members; }
-            set { members = value; }
+            get { return this.members; }
+            set { this.members = value; }
         }
-
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
-namespace Colab.Models
+﻿namespace Colab.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Feed
     {
@@ -12,6 +12,7 @@ namespace Colab.Models
             this.posts = new HashSet<Post>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         public int ProjectId { get; set; }
@@ -20,8 +21,8 @@ namespace Colab.Models
 
         public virtual ICollection<Post> Posts
         {
-            get { return posts; }
-            set { posts = value; }
+            get { return this.posts; }
+            set { this.posts = value; }
         }
     }
 }

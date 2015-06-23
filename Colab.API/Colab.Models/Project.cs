@@ -2,11 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Project
     {
         private ICollection<Team> teams;
-
         private ICollection<User> members;
 
         public Project()
@@ -15,6 +15,7 @@
             this.members = new HashSet<User>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -33,15 +34,14 @@
 
         public virtual ICollection<Team> Teams
         {
-            get { return teams; }
-            set { teams = value; }
+            get { return this.teams; }
+            set { this.teams = value; }
         }
 
         public virtual ICollection<User> Members
         {
-            get { return members; }
-            set { members = value; }
+            get { return this.members; }
+            set { this.members = value; }
         }
-        
     }
 }

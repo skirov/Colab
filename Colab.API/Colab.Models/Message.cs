@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Colab.Models
+﻿namespace Colab.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class Message
     {
+        [Key]
         public int Id { get; set; }
 
         public string Title { get; set; }
