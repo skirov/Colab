@@ -19,6 +19,7 @@
 
         public int ProjectId { get; set; }
 
+        [Required]
         public virtual Project Project { get; set; }
 
         public virtual ICollection<Post> Posts

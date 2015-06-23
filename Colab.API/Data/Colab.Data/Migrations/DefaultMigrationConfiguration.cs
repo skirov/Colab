@@ -7,7 +7,7 @@ namespace Colab.Data.Migrations
         public DefaultMigrationConfiguration()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
     }
 }

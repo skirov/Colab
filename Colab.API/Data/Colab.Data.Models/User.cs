@@ -14,24 +14,38 @@
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
-        private ICollection<Project> projects;
+        private ICollection<Project> createdProjects;
+        private ICollection<Project> projects; 
         private ICollection<Team> teams;
-        private ICollection<Issue> issues;
-        private ICollection<Message> messages;
+        private ICollection<Issue> assignedIssues;
+        private ICollection<Issue> reportedIssues;
+        private ICollection<Message> sentMessages;
+        private ICollection<Message> recivedMessages;
         private ICollection<Note> notes;
+        private ICollection<Post> posts;
 
         public User()
         {
+            this.createdProjects = new HashSet<Project>();
             this.projects = new HashSet<Project>();
             this.teams = new HashSet<Team>();
-            this.issues = new HashSet<Issue>();
-            this.messages = new HashSet<Message>();
+            this.assignedIssues = new HashSet<Issue>();
+            this.reportedIssues = new HashSet<Issue>();
+            this.sentMessages = new HashSet<Message>();
+            this.recivedMessages = new HashSet<Message>();
             this.notes = new HashSet<Note>();
+            this.posts = new HashSet<Post>();
         }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public virtual ICollection<Project> CreatedProjects
+        {
+            get { return this.createdProjects; }
+            set { this.createdProjects = value; }
+        }
 
         public virtual ICollection<Project> Projects
         {
@@ -45,22 +59,40 @@
             set { this.teams = value; }
         }
 
-        public virtual ICollection<Issue> Issues
+        public virtual ICollection<Issue> AssignedIssues
         {
-            get { return this.issues; }
-            set { this.issues = value; }
+            get { return this.assignedIssues; }
+            set { this.assignedIssues = value; }
         }
 
-        public virtual ICollection<Message> Messages
+        public virtual ICollection<Issue> ReportedIssues
         {
-            get { return this.messages; }
-            set { this.messages = value; }
+            get { return this.reportedIssues; }
+            set { this.reportedIssues = value; }
+        }
+
+        public virtual ICollection<Message> SentMessages
+        {
+            get { return this.sentMessages; }
+            set { this.sentMessages = value; }
+        }
+
+        public virtual ICollection<Message> RecivedMessages
+        {
+            get { return this.recivedMessages; }
+            set { this.recivedMessages = value; }
         }
 
         public virtual ICollection<Note> Notes
         {
             get { return this.notes; }
             set { this.notes = value; }
+        }
+
+        public virtual ICollection<Post> Posts
+        {
+            get { return this.posts; }
+            set { this.posts = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)

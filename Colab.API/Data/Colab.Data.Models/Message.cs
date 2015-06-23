@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Colab.Data.Contracts;
 
@@ -14,12 +15,14 @@
 
         public string Body { get; set; }
 
-        public int SenderId { get; set; }
+        public string SenderId { get; set; }
 
-        public int RecieverId { get; set; }
-
+        [InverseProperty("SentMessages")]
         public virtual User Sender { get; set; }
 
+        public string RecieverId { get; set; }
+
+        [InverseProperty("RecivedMessages")]
         public virtual User Reciever { get; set; }
     }
 }

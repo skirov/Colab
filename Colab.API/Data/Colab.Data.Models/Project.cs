@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Colab.Data.Contracts;
 
@@ -23,8 +24,9 @@
 
         public string Description { get; set; }
 
-        public int CreatorId { get; set; }
+        public string CreatorId { get; set; }
 
+        [InverseProperty("CreatedProjects")]
         public virtual User Creator { get; set; }
 
         public int FeedId { get; set; }
@@ -37,6 +39,7 @@
             set { this.teams = value; }
         }
 
+        [InverseProperty("Projects")]
         public virtual ICollection<User> Members
         {
             get { return this.members; }
