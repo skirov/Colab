@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Team
+    using Colab.Data.Contracts;
+
+    public class Team : AuditInfo
     {
         private ICollection<User> members;
         private ICollection<Issue> issues;

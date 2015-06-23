@@ -6,8 +6,7 @@
     using Colab.Data;
     using Colab.Data.Repositories.Base;
     using Colab.Data.Repositories.Contracts;
-
-    using SimpleBookStore.Data.Models;
+    using Colab.Models;
 
     public class UsersRepository : GenericRepository<User>, IUsersRepository
     {

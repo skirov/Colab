@@ -1,9 +1,10 @@
 ﻿namespace Colab.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Post
+    using Colab.Data.Contracts;
+
+    public class Post : AuditInfo
     {
         [Key]
         public int Id { get; set; }
@@ -13,8 +14,6 @@
         public int CreatorId { get; set; }
 
         public int FeedId { get; set; }
-
-        public DateTime CreationDate { get; set; }
 
         public virtual User Creator { get; set; }
 

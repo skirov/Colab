@@ -2,13 +2,17 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using Colab.Data.Contracts;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class User : IdentityUser
+    public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
         private ICollection<Project> projects;
         private ICollection<Team> teams;
@@ -28,8 +32,6 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public DateTime CreationDate { get; set; }
 
         public virtual ICollection<Project> Projects
         {
@@ -69,5 +71,26 @@
             // Add custom user claims here
             return userIdentity;
         }
+
+        #region IDeletableEntity
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? DeletedOn { get; set; }
+        #endregion
+
+        #region IAuditInfo
+        [DataType(DataType.DateTime)]
+        public DateTime CreatedOn { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the CreatedOn property should be automatically set.
+        /// </summary>
+        [NotMapped]
+        public bool PreserveCreatedOn { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? ModifiedOn { get; set; }
+        #endregion
     }
 }

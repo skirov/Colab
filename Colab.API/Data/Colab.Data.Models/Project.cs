@@ -1,10 +1,11 @@
 ﻿namespace Colab.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Project
+    using Colab.Data.Contracts;
+
+    public class Project : AuditInfo
     {
         private ICollection<Team> teams;
         private ICollection<User> members;
@@ -22,13 +23,11 @@
 
         public string Description { get; set; }
 
-        public DateTime CreationDate { get; set; }
-
         public int CreatorId { get; set; }
 
-        public int FeedId { get; set; }
-
         public virtual User Creator { get; set; }
+
+        public int FeedId { get; set; }
 
         public virtual Feed Feed { get; set; }
 

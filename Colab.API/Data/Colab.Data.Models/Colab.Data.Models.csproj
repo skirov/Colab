@@ -71,6 +71,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Colab.Data.Contracts\Colab.Data.Contracts.csproj">
+      <Project>{9C2E0F99-104E-4A4C-B0BA-136B01ABB1C2}</Project>
+      <Name>Colab.Data.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

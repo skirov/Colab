@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Feed
+    using Colab.Data.Contracts;
+
+    public class Feed : AuditInfo
     {
         private ICollection<Post> posts;
 

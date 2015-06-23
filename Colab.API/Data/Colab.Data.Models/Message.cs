@@ -3,7 +3,9 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Message
+    using Colab.Data.Contracts;
+
+    public class Message : AuditInfo
     {
         [Key]
         public int Id { get; set; }
@@ -15,8 +17,6 @@
         public int SenderId { get; set; }
 
         public int RecieverId { get; set; }
-
-        public DateTime CreationDate { get; set; }
 
         public virtual User Sender { get; set; }
 

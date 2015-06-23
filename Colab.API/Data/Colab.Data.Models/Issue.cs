@@ -3,7 +3,9 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Issue
+    using Colab.Data.Contracts;
+
+    public class Issue : AuditInfo
     {
         [Key]
         public int Id { get; set; }
@@ -13,8 +15,6 @@
         public string Status { get; set; }
 
         public string Priority { get; set; }
-
-        public DateTime CreationDate { get; set; }
 
         public int TeamId { get; set; }
 

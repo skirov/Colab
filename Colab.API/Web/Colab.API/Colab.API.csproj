@@ -307,6 +307,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\Colab.Data.Contracts\Colab.Data.Contracts.csproj">
+      <Project>{9C2E0F99-104E-4A4C-B0BA-136B01ABB1C2}</Project>
+      <Name>Colab.Data.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\Colab.Data.Models\Colab.Data.Models.csproj">
       <Project>{DC24A544-CA87-4419-9525-A91E9256C1FF}</Project>
       <Name>Colab.Data.Models</Name>
