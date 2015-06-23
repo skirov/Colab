@@ -1,4 +1,4 @@
-﻿namespace SimpleBookStore.Data.Repositories
+﻿namespace Colab.Data.Repositories
 {
     using System;
     using System.Linq;
