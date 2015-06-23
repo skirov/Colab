@@ -11,18 +11,18 @@
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class OjsData : IColabData
+    public class ColabData : IColabData
     {
         private readonly IColabDbContext context;
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        public OjsData()
+        public ColabData()
             : this(new ColabDbContext())
         {
         }
 
-        public OjsData(IColabDbContext context)
+        public ColabData(IColabDbContext context)
         {
             this.context = context;
         }
