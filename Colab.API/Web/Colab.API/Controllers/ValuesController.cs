@@ -1,15 +1,25 @@
 ﻿namespace Colab.API.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
 
-    [Authorize]
-    public class ValuesController : ApiController
+    using Colab.Data;
+
+    ////[Authorize]
+    public class ValuesController : BaseApiController
     {
+        public ValuesController(IColabData data)
+            : base(data)
+        {
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var count = this.Data.Messages.All().Count();
+
+            return new string[] { "value1", "value2", count.ToString() };
         }
 
         // GET api/values/5
