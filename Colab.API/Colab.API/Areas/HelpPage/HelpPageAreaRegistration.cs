@@ -1,8 +1,10 @@
-using System.Web.Http;
-using System.Web.Mvc;
-
 namespace Colab.API.Areas.HelpPage
 {
+    using System.Web.Http;
+    using System.Web.Mvc;
+
+    using Colab.API.Areas.HelpPage.App_Start;
+
     public class HelpPageAreaRegistration : AreaRegistration
     {
         public override string AreaName

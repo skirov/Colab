@@ -52,8 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ColabDbContext.cs" />
+    <Compile Include="Migrations\DefaultMigrationConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

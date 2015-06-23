@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Owin;
-using Owin;
+﻿using Colab.API;
 
-[assembly: OwinStartup(typeof(Colab.API.Startup))]
+using Microsoft.Owin;
+
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace Colab.API
 {
+    using Owin;
+
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            this.ConfigureAuth(app);
         }
     }
 }

@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
-using Microsoft.Owin.Security.OAuth;
-using Owin;
-using Colab.API.Providers;
-using Colab.API.Models;
-using Colab.Data;
-
-namespace Colab.API
+﻿namespace Colab.API
 {
+    using System;
+
+    using Colab.API.Providers;
+    using Colab.Data;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.Owin;
+    using Microsoft.Owin.Security.Cookies;
+    using Microsoft.Owin.Security.OAuth;
+
+    using Owin;
+
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
@@ -46,24 +44,24 @@ namespace Colab.API
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //// Uncomment the following lines to enable logging in with third party login providers
+            ////app.UseMicrosoftAccountAuthentication(
+            ////    clientId: "",
+            ////    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            ////app.UseTwitterAuthentication(
+            ////    consumerKey: "",
+            ////    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            ////app.UseFacebookAuthentication(
+            ////    appId: "",
+            ////    appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            ////app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            ////{
+            ////    ClientId = "",
+            ////    ClientSecret = ""
+            ////});
         }
     }
 }
