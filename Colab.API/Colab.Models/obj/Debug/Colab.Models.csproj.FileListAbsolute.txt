@@ -1,0 +1,13 @@
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Colab.Models.dll.config
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Colab.Models.dll
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Colab.Models.pdb
+D:\Projects\Colab.API\Colab.Models\bin\Debug\EntityFramework.dll
+D:\Projects\Colab.API\Colab.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\Colab.API\Colab.Models\bin\Debug\EntityFramework.xml
+D:\Projects\Colab.API\Colab.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\Colab.API\Colab.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\Colab.API\Colab.Models\obj\Debug\Colab.Models.dll
+D:\Projects\Colab.API\Colab.Models\obj\Debug\Colab.Models.pdb

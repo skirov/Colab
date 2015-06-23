@@ -1,0 +1,16 @@
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Colab.Data.dll.config
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Colab.Data.dll
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Colab.Data.pdb
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Colab.Models.dll
+D:\Projects\Colab.API\Colab.Data\bin\Debug\EntityFramework.dll
+D:\Projects\Colab.API\Colab.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Colab.Models.pdb
+D:\Projects\Colab.API\Colab.Data\bin\Debug\EntityFramework.xml
+D:\Projects\Colab.API\Colab.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\Colab.API\Colab.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\Colab.API\Colab.Data\obj\Debug\Colab.Data.csprojResolveAssemblyReference.cache
+D:\Projects\Colab.API\Colab.Data\obj\Debug\Colab.Data.dll
+D:\Projects\Colab.API\Colab.Data\obj\Debug\Colab.Data.pdb

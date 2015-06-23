@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colab.API", "Colab.API\Colab.API.csproj", "{55105840-C873-4BFD-B47C-62478A21E741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colab.Models", "Colab.Models\Colab.Models.csproj", "{DC24A544-CA87-4419-9525-A91E9256C1FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colab.Data", "Colab.Data\Colab.Data.csproj", "{8CBC6948-A2C4-462C-827C-9C5CE028558B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55105840-C873-4BFD-B47C-62478A21E741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55105840-C873-4BFD-B47C-62478A21E741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55105840-C873-4BFD-B47C-62478A21E741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55105840-C873-4BFD-B47C-62478A21E741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC24A544-CA87-4419-9525-A91E9256C1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC24A544-CA87-4419-9525-A91E9256C1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC24A544-CA87-4419-9525-A91E9256C1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC24A544-CA87-4419-9525-A91E9256C1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CBC6948-A2C4-462C-827C-9C5CE028558B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CBC6948-A2C4-462C-827C-9C5CE028558B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CBC6948-A2C4-462C-827C-9C5CE028558B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CBC6948-A2C4-462C-827C-9C5CE028558B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
