@@ -17,6 +17,7 @@
         private ICollection<Project> createdProjects;
         private ICollection<Project> projects; 
         private ICollection<Team> teams;
+        private ICollection<Team> createdTeams; 
         private ICollection<Issue> assignedIssues;
         private ICollection<Issue> reportedIssues;
         private ICollection<Message> sentMessages;
@@ -29,6 +30,7 @@
             this.createdProjects = new HashSet<Project>();
             this.projects = new HashSet<Project>();
             this.teams = new HashSet<Team>();
+            this.createdTeams = new HashSet<Team>();
             this.assignedIssues = new HashSet<Issue>();
             this.reportedIssues = new HashSet<Issue>();
             this.sentMessages = new HashSet<Message>();
@@ -51,6 +53,12 @@
         {
             get { return this.projects; }
             set { this.projects = value; }
+        }
+
+        public virtual ICollection<Team> CreatedTeams
+        {
+            get { return this.createdTeams; }
+            set { this.createdTeams = value; }
         }
 
         public virtual ICollection<Team> Teams
