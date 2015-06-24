@@ -1,23 +1,19 @@
 ﻿namespace Colab.API.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
 
-    using Microsoft.AspNet.Identity;
-
+    using Colab.API.DataModels;
     using Colab.Data;
     using Colab.Models;
-    using Colab.API.DataModels;
+
+    using Microsoft.AspNet.Identity;
 
     public class TeamController : BaseApiController
     {
-        private IColabData data;
-
         public TeamController(IColabData data)
             : base(data)
         {
-            this.data = data;
         }
 
         [HttpPost]
@@ -32,18 +28,18 @@
                 CreatorId = currentUserId
             };
 
-            this.data.Teams.Add(newTeam);
-            this.data.SaveChanges();
+            this.Data.Teams.Add(newTeam);
+            this.Data.SaveChanges();
 
-            return Ok(newTeam.Id);
+            return this.Ok(newTeam.Id);
         }
 
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var teamsFromDB = this.data.Teams.All();
+            var teamsFromDb = this.Data.Teams.All();
 
-            var teams = from t in teamsFromDB
+            var teams = from t in teamsFromDb
                            select new TeamSimpleDto()
                            {
                                Id = t.Id,
@@ -51,23 +47,23 @@
                                Description = t.Description
                            };
 
-            return Ok(teams);
+            return this.Ok(teams);
         }
 
         [HttpGet]
         public IHttpActionResult Get([FromBody]int id)
         {
-            var teamFromDB = this.data.Teams.GetById(id);
+            var teamFromDb = this.Data.Teams.GetById(id);
 
             var team = new TeamDto
             {
-                Id = teamFromDB.Id,
-                Title = teamFromDB.Title,
-                Description = teamFromDB.Description
+                Id = teamFromDb.Id,
+                Title = teamFromDb.Title,
+                Description = teamFromDb.Description
                 //TODO: Create full DTO
             };
 
-            return Ok(team);
+            return this.Ok(team);
         }
     }
 }

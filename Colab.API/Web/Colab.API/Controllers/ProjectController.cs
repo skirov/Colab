@@ -1,24 +1,20 @@
 ﻿namespace Colab.API.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
 
-    using Microsoft.AspNet.Identity;
-
+    using Colab.API.DataModels;
     using Colab.Data;
     using Colab.Models;
-    using Colab.API.DataModels;
-    
+
+    using Microsoft.AspNet.Identity;
+
     [Authorize]
     public class ProjectController : BaseApiController
     {
-        private IColabData data;
-
         public ProjectController(IColabData data)
             : base(data)
         {
-            this.data = data;
         }
 
         [HttpPost]
@@ -33,18 +29,18 @@
                 CreatorId = currentUserId
             };
 
-            this.data.Projects.Add(newProject);
-            this.data.SaveChanges();
+            this.Data.Projects.Add(newProject);
+            this.Data.SaveChanges();
 
-            return Ok(newProject.Id);
+            return this.Ok(newProject.Id);
         }
 
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var projectsFromDB = this.data.Projects.All();
+            var projectsFromDb = this.Data.Projects.All();
 
-            var projects = from p in projectsFromDB
+            var projects = from p in projectsFromDb
                            select new ProjectSimpleDto()
                            {
                                Id = p.Id,
@@ -59,23 +55,23 @@
                                        }
                            };
 
-            return Ok(projects);
+            return this.Ok(projects);
         }
 
         [HttpGet]
         public IHttpActionResult Get([FromBody]int id)
         {
-            var projectFromDb = this.data.Projects.GetById(id);
+            var projectFromDb = this.Data.Projects.GetById(id);
 
             var project = new ProjectSimpleDto
             {
                 Id = projectFromDb.Id,
                 Title = projectFromDb.Title,
                 Description = projectFromDb.Description
-                //TODO: Create full DTO
+                // TODO: Create full DTO
             };
 
-            return Ok(project);
+            return this.Ok(project);
         }
     }
 }
