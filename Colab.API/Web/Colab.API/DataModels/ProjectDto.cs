@@ -8,7 +8,6 @@
     {
         public ProjectDto()
         {
-            this.Teams = new List<TeamDto>();
             this.Members = new List<User>();
         }
 

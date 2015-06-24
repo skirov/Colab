@@ -8,6 +8,7 @@
     {
         public ProjectSimpleDto()
         {
+            this.TeamsSimple = new List<TeamDto>();
         }
 
         public int Id { get; set; }

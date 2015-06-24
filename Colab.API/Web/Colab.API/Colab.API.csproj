@@ -242,8 +242,11 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DataModels\ProjectSimpleDto.cs" />
     <Compile Include="DataModels\ProjectDto.cs" />
+    <Compile Include="DataModels\TeamSimpleDto.cs" />
     <Compile Include="DataModels\TeamDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
