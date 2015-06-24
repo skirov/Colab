@@ -45,12 +45,12 @@
             var projectsFromDB = this.data.Projects.All();
 
             var projects = from p in projectsFromDB
-                           select new ProjectDto()
+                           select new ProjectSimpleDto()
                            {
                                Id = p.Id,
                                Title = p.Title,
                                Description = p.Description,
-                               TeamsSimple = from t in p.Teams
+                               Teams = from t in p.Teams
                                        select new TeamSimpleDto()
                                        {
                                            Id = t.Id,

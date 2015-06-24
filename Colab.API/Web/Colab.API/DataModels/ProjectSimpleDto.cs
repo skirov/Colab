@@ -3,20 +3,26 @@
     using Colab.Models;
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
 
+    [DataContract()]
     public class ProjectSimpleDto
     {
         public ProjectSimpleDto()
         {
-            this.TeamsSimple = new List<TeamDto>();
+            this.Teams = new List<TeamDto>();
         }
 
+        [DataMember(Name = "id")]
         public int Id { get; set; }
 
+        [DataMember(Name="title")]
         public string Title { get; set; }
 
+        [DataMember(Name = "description")]
         public string Description { get; set; }
 
-        public IEnumerable<TeamSimpleDto> TeamsSimple { get; set; }
+        [DataMember(Name = "teams")]
+        public IEnumerable<TeamSimpleDto> Teams { get; set; }
     }
 }
