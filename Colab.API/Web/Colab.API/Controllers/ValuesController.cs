@@ -6,7 +6,7 @@
 
     using Colab.Data;
 
-    ////[Authorize]
+    [Authorize]
     public class ValuesController : BaseApiController
     {
         public ValuesController(IColabData data)

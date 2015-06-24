@@ -25,7 +25,11 @@
 
         public int ProjectId { get; set; }
 
+        public string CreatorId { get; set; }
+
         public virtual Project Project { get; set; }
+
+        public virtual User Creator { get; set; }
 
         public virtual ICollection<Issue> Issues
         {
