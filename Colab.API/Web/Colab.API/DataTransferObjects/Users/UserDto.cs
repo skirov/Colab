@@ -2,9 +2,11 @@
 {
     using System;
     using System.Linq.Expressions;
+    using System.Runtime.Serialization;
 
     using Colab.Models;
 
+    [DataContract]
     public class UserDto
     {
         public static Expression<Func<User, UserDto>> ToDto
@@ -19,8 +21,10 @@
             }
         }
 
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
+        [DataMember(Name = "username")]
         public string UserName { get; set; }
     }
 }
