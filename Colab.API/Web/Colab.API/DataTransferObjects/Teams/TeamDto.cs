@@ -14,7 +14,13 @@
     [DataContract]
     public class TeamDto : TeamSimpleDto
     {
-        public new static Expression<Func<Team, TeamDto>> ToDto
+        public TeamDto()
+        {
+            this.Members = new List<UserDto>();
+            this.Issues = new List<IssueDto>();
+        }
+
+        public static new Expression<Func<Team, TeamDto>> ToDto
         {
             get
             {
@@ -41,12 +47,6 @@
                     Members = team.Members.AsQueryable().Select(UserDto.ToDto)
                 };
             }
-        }
-
-        public TeamDto()
-        {
-            this.Members = new List<UserDto>();
-            this.Issues = new List<IssueDto>();
         }
 
         [DataMember(Name = "projectId")]

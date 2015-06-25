@@ -49,8 +49,8 @@
         [HttpGet]
         public IHttpActionResult Get([FromBody]int id)
         {
-            var project = this.Data.Projects.
-                All()
+            var project = this.Data.Projects
+                .All()
                 .Where(x => x.Id == id)
                 .Select(ProjectDto.ToDto)
                 .FirstOrDefault();

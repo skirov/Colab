@@ -1,20 +1,24 @@
 ﻿namespace Colab.API.DataTransferObjects.Projects
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
 
     using Colab.API.DataTransferObjects.Teams;
-    using Colab.Models;
-
     using Colab.API.DataTransferObjects.Users;
-    using System;
+    using Colab.Models;
 
     [DataContract]
     public class ProjectDto : ProjectSimpleDto
     {
-        public new static Expression<Func<Project, ProjectDto>> ToDto
+        public ProjectDto()
+        {
+            this.Members = new List<UserDto>();
+        }
+
+        public static new Expression<Func<Project, ProjectDto>> ToDto
         {
             get
             {
@@ -32,11 +36,6 @@
                     Members = project.Members.AsQueryable().Select(UserDto.ToDto)
                 };
             }
-        }
-
-        public ProjectDto()
-        {
-            this.Members = new List<UserDto>();
         }
 
         [DataMember(Name = "creator")]

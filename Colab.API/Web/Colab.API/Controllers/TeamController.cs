@@ -50,7 +50,7 @@
         [HttpGet]
         public IHttpActionResult Get([FromBody]int id)
         {
-            var teamDto= this.Data.Teams
+            var teamDto = this.Data.Teams
                 .All()
                 .Where(x => x.Id == id)
                 .Select(TeamDto.ToDto)
