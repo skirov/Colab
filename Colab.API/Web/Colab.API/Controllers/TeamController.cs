@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Web.Http;
 
-    using Colab.API.DataTransferObjects;
     using Colab.API.DataTransferObjects.Projects;
     using Colab.API.DataTransferObjects.Teams;
     using Colab.Data;
