@@ -39,15 +39,10 @@
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var teamsFromDb = this.Data.Teams.All();
-
-            var teams = from t in teamsFromDb
-                           select new TeamSimpleDto()
-                           {
-                               Id = t.Id,
-                               Title = t.Title,
-                               Description = t.Description
-                           };
+            var teams = this.Data.Teams
+                .All()
+                .Select(TeamSimpleDto.ToDto)
+                .ToList();
 
             return this.Ok(teams);
         }
@@ -55,17 +50,13 @@
         [HttpGet]
         public IHttpActionResult Get([FromBody]int id)
         {
-            var teamFromDb = this.Data.Teams.GetById(id);
+            var teamDto= this.Data.Teams
+                .All()
+                .Where(x => x.Id == id)
+                .Select(TeamDto.ToDto)
+                .FirstOrDefault();
 
-            var team = new TeamDto
-            {
-                Id = teamFromDb.Id,
-                Title = teamFromDb.Title,
-                Description = teamFromDb.Description
-                //TODO: Create full DTO
-            };
-
-            return this.Ok(team);
+            return this.Ok(teamDto);
         }
     }
 }

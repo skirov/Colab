@@ -3,9 +3,7 @@
     using System.Linq;
     using System.Web.Http;
 
-    using Colab.API.DataTransferObjects;
     using Colab.API.DataTransferObjects.Projects;
-    using Colab.API.DataTransferObjects.Teams;
     using Colab.Data;
     using Colab.Models;
 
@@ -40,22 +38,10 @@
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var projectsFromDb = this.Data.Projects.All();
-
-            var projects = from p in projectsFromDb
-                           select new ProjectSimpleDto()
-                           {
-                               Id = p.Id,
-                               Title = p.Title,
-                               Description = p.Description,
-                               Teams = from t in p.Teams
-                                       select new TeamSimpleDto()
-                                       {
-                                           Id = t.Id,
-                                           Title = t.Title,
-                                           Description = t.Description
-                                       }
-                           };
+            var projects = this.Data.Projects
+                .All()
+                .Select(ProjectSimpleDto.ToDto)
+                .ToList();
 
             return this.Ok(projects);
         }
@@ -63,15 +49,11 @@
         [HttpGet]
         public IHttpActionResult Get([FromBody]int id)
         {
-            var projectFromDb = this.Data.Projects.GetById(id);
-
-            var project = new ProjectSimpleDto
-            {
-                Id = projectFromDb.Id,
-                Title = projectFromDb.Title,
-                Description = projectFromDb.Description
-                // TODO: Create full DTO
-            };
+            var project = this.Data.Projects.
+                All()
+                .Where(x => x.Id == id)
+                .Select(ProjectDto.ToDto)
+                .FirstOrDefault();
 
             return this.Ok(project);
         }
