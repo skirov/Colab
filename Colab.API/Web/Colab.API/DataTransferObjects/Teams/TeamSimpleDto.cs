@@ -17,6 +17,7 @@
                 {
                     Id = team.Id,
                     Title = team.Title,
+                    ProjectId = team.ProjectId,
                     Description = team.Description
                 };
             }
@@ -30,5 +31,8 @@
 
         [DataMember(Name = "description")]
         public string Description { get; set; }
+
+        [DataMember(Name = "projectId")]
+        public int ProjectId { get; set; }
     }
 }

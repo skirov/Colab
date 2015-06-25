@@ -18,7 +18,7 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Create([FromBody]ProjectSimpleDto project)
+        public IHttpActionResult Create([FromBody]TeamSimpleDto project)
         {
             var currentUserId = this.User.Identity.GetUserId();
 
@@ -26,7 +26,8 @@
             {
                 Title = project.Title,
                 Description = project.Description,
-                CreatorId = currentUserId
+                CreatorId = currentUserId,
+                ProjectId = project.ProjectId
             };
 
             this.Data.Teams.Add(newTeam);
@@ -47,7 +48,7 @@
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromBody]int id)
+        public IHttpActionResult Get(int id)
         {
             var teamDto = this.Data.Teams
                 .All()

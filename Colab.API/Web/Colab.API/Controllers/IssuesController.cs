@@ -5,12 +5,36 @@
 
     using Colab.API.DataTransferObjects.Issues;
     using Colab.Data;
+    using Colab.Models;
 
     public class IssuesController : BaseApiController
     {
         public IssuesController(IColabData data)
             : base(data)
         {
+        }
+
+        [HttpPost]
+        public IHttpActionResult Create([FromBody]IssueDto issue)
+        {
+            var newIssue = new Issue()
+            {
+                Title = issue.Title,
+                Status = issue.Status,
+                Priority = issue.Priority,
+                TeamId = issue.TeamId,
+                ReporterId = issue.ReporterId,
+                AssigneeId = issue.AssigneeId
+            };
+
+            this.Data.Issues.Add(newIssue);
+            this.Data.SaveChanges();
+
+
+            return Ok(new {
+                teamId = issue.TeamId,
+                issueId = newIssue.Id
+            });
         }
 
         [HttpGet]

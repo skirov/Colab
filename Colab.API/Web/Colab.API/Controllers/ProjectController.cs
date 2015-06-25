@@ -47,7 +47,7 @@
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromBody]int id)
+        public IHttpActionResult Get(int id)
         {
             var project = this.Data.Projects
                 .All()

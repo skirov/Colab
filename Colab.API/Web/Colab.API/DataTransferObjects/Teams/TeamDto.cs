@@ -29,7 +29,6 @@
                     Id = team.Id,
                     Title = team.Title,
                     Description = team.Description,
-                    ProjectId = team.ProjectId,
                     Project = new ProjectDto
                     {
                         Id = team.Project.Id,
@@ -48,9 +47,6 @@
                 };
             }
         }
-
-        [DataMember(Name = "projectId")]
-        public int ProjectId { get; set; }
 
         [DataMember(Name = "project")]
         public ProjectDto Project { get; set; }
