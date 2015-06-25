@@ -244,10 +244,13 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DataModels\ProjectSimpleDto.cs" />
-    <Compile Include="DataModels\ProjectDto.cs" />
-    <Compile Include="DataModels\TeamSimpleDto.cs" />
-    <Compile Include="DataModels\TeamDto.cs" />
+    <Compile Include="DataTransferObjects\Feeds\FeedDto.cs" />
+    <Compile Include="DataTransferObjects\Issues\IssueDto.cs" />
+    <Compile Include="DataTransferObjects\Projects\ProjectSimpleDto.cs" />
+    <Compile Include="DataTransferObjects\Projects\ProjectDto.cs" />
+    <Compile Include="DataTransferObjects\Teams\TeamSimpleDto.cs" />
+    <Compile Include="DataTransferObjects\Teams\TeamDto.cs" />
+    <Compile Include="DataTransferObjects\Users\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
