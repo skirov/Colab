@@ -26,6 +26,9 @@
                 CreatorId = currentUserId
             };
 
+            this.Data.Posts.Add(newPost);
+            this.Data.SaveChanges();
+
             return this.Ok();
         }
     }

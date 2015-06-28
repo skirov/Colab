@@ -1,5 +1,6 @@
 ﻿namespace Colab.API.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
 
@@ -58,6 +59,11 @@
                 .Select(ProjectDto.ToDto)
                 .FirstOrDefault();
 
+            if (project == null)
+            {
+                return this.NotFound();
+            }
+
             return this.Ok(project);
         }
 
@@ -65,8 +71,16 @@
         public IHttpActionResult AddMember([FromBody]UserDto user, [FromUri]int id)
         {
             var project = this.Data.Projects.GetById(id);
+            if (project == null)
+            {
+                return this.NotFound();
+            }
 
             var userToAdd = this.Data.Users.GetById(user.Id);
+            if (userToAdd == null)
+            {
+                return this.NotFound();
+            }
 
             project.Members.Add(userToAdd);
 
@@ -79,14 +93,18 @@
         [HttpGet]
         public IHttpActionResult AllMembers(int id)
         {
-            var foundMembers = this.Data.Projects
+            var project = this.Data.Projects
                 .All()
                 .Where(x => x.Id == id)
                 .Select(ProjectDto.ToDto)
-                .FirstOrDefault()
-                .Members;
+                .FirstOrDefault();
 
-            return this.Ok(foundMembers);
+            if (project != null)
+            {
+                return this.Ok(project.Members);
+            }
+
+            return this.NotFound();
         }
     }
 }

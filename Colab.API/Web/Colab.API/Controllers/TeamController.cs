@@ -58,6 +58,11 @@
                 .Select(TeamDto.ToDto)
                 .FirstOrDefault();
 
+            if (teamDto == null)
+            {
+                return this.NotFound();
+            }
+
             return this.Ok(teamDto);
         }
 
@@ -65,8 +70,16 @@
         public IHttpActionResult AddMember([FromBody]UserDto user, [FromUri]int id)
         {
             var team = this.Data.Teams.GetById(id);
+            if (team == null)
+            {
+                return this.NotFound();
+            }
 
             var userToAdd = this.Data.Users.GetById(user.Id);
+            if (userToAdd == null)
+            {
+                return this.NotFound();
+            }
 
             team.Members.Add(userToAdd);
 
@@ -79,14 +92,18 @@
         [HttpGet]
         public IHttpActionResult AllMembers(int id)
         {
-            var foundMembers = this.Data.Teams
-                .All()
-                .Where(x => x.Id == id)
-                .Select(TeamDto.ToDto)
-                .FirstOrDefault()
-                .Members;
+            var team = this.Data.Teams
+                           .All()
+                           .Where(x => x.Id == id)
+                           .Select(TeamDto.ToDto)
+                           .FirstOrDefault();
 
-            return this.Ok(foundMembers);
+            if (team == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(team.Members);
         }
     }
 }

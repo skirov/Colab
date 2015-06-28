@@ -17,7 +17,7 @@
         [HttpPost]
         public IHttpActionResult Create([FromBody]IssueDto issue)
         {
-            var newIssue = new Issue()
+            var newIssue = new Issue
             {
                 Title = issue.Title,
                 Status = issue.Status,
@@ -51,13 +51,18 @@
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
-            var project = this.Data.Issues
+            var issue = this.Data.Issues
                 .All()
                 .Where(x => x.Id == id)
                 .Select(IssueDto.ToDto)
                 .FirstOrDefault();
 
-            return this.Ok(project);
+            if (issue == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(issue);
         }
     }
 }

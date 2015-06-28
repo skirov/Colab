@@ -10,7 +10,7 @@
     [DataContract]
     public class PostDto
     {
-        public static new Expression<Func<Post, PostDto>> ToDto
+        public static Expression<Func<Post, PostDto>> ToDto
         {
             get
             {
