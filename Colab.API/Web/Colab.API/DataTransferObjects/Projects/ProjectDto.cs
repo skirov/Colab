@@ -9,6 +9,7 @@
     using Colab.API.DataTransferObjects.Teams;
     using Colab.API.DataTransferObjects.Users;
     using Colab.Models;
+    using Colab.API.DataTransferObjects.Feeds;
 
     [DataContract]
     public class ProjectDto : ProjectSimpleDto
@@ -40,10 +41,6 @@
 
         [DataMember(Name = "creator")]
         public UserDto Creator { get; set; }
-
-        // TODO: Do you need this in the DTO?
-        [DataMember(Name = "feed")]
-        public Feed Feed { get; set; }
 
         [DataMember(Name = "members")]
         public IEnumerable<UserDto> Members { get; set; }

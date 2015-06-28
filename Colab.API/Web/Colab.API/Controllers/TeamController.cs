@@ -9,6 +9,8 @@
     using Colab.Models;
 
     using Microsoft.AspNet.Identity;
+    using System.Collections.Generic;
+    using Colab.API.DataTransferObjects.Users;
 
     public class TeamController : BaseApiController
     {
@@ -18,17 +20,19 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Create([FromBody]TeamSimpleDto project)
+        public IHttpActionResult Create([FromBody]TeamSimpleDto team)
         {
             var currentUserId = this.User.Identity.GetUserId();
+            var firstTeamMember = this.Data.Users.GetById(currentUserId);
 
             var newTeam = new Team
             {
-                Title = project.Title,
-                Description = project.Description,
+                Title = team.Title,
+                Description = team.Description,
                 CreatorId = currentUserId,
-                ProjectId = project.ProjectId
+                ProjectId = team.ProjectId
             };
+            newTeam.Members.Add(firstTeamMember);
 
             this.Data.Teams.Add(newTeam);
             this.Data.SaveChanges();
@@ -41,7 +45,7 @@
         {
             var teams = this.Data.Teams
                 .All()
-                .Select(TeamSimpleDto.ToDto)
+                .Select(TeamDto.ToDto)
                 .ToList();
 
             return this.Ok(teams);
@@ -57,6 +61,34 @@
                 .FirstOrDefault();
 
             return this.Ok(teamDto);
+        }
+
+        [HttpPost]
+        public IHttpActionResult AddMember([FromBody]UserDto user, [FromUri]int id)
+        {
+            var team = this.Data.Teams.GetById(id);
+
+            var userToAdd = this.Data.Users.GetById(user.Id);
+
+            team.Members.Add(userToAdd);
+
+            this.Data.Teams.Update(team);
+            this.Data.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpGet]
+        public IHttpActionResult AllMembers(int id)
+        {
+            var foundMembers = this.Data.Teams
+                .All()
+                .Where(x => x.Id == id)
+                .Select(TeamDto.ToDto)
+                .FirstOrDefault()
+                .Members;
+
+            return Ok(foundMembers);
         }
     }
 }

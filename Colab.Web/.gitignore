@@ -1,9 +1,6 @@
-*.DS_Store
-.idea
-/nbproject/private/
-/nbproject/
-/node_modules/
-TODO
-*.zip
-test.html
-*.log
+.DS_Store
+node_modules/
+bower_modules/
+
+# Don't track build output
+dist/

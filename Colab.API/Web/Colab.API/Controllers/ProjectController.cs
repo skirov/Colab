@@ -8,6 +8,7 @@
     using Colab.Models;
 
     using Microsoft.AspNet.Identity;
+    using Colab.API.DataTransferObjects.Users;
 
     [Authorize]
     public class ProjectController : BaseApiController
@@ -21,6 +22,7 @@
         public IHttpActionResult Create([FromBody]ProjectDto project)
         {
             var currentUserId = this.User.Identity.GetUserId();
+            var firstProjectMember = this.Data.Users.GetById(currentUserId);
 
             var newProject = new Project
             {
@@ -28,6 +30,7 @@
                 Description = project.Description,
                 CreatorId = currentUserId
             };
+            newProject.Members.Add(firstProjectMember);
 
             this.Data.Projects.Add(newProject);
             this.Data.SaveChanges();
@@ -56,6 +59,34 @@
                 .FirstOrDefault();
 
             return this.Ok(project);
+        }
+
+        [HttpPost]
+        public IHttpActionResult AddMember([FromBody]UserDto user, [FromUri]int id)
+        {
+            var project = this.Data.Projects.GetById(id);
+
+            var userToAdd = this.Data.Users.GetById(user.Id);
+
+            project.Members.Add(userToAdd);
+
+            this.Data.Projects.Update(project);
+            this.Data.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpGet]
+        public IHttpActionResult AllMembers(int id)
+        {
+            var foundMembers = this.Data.Projects
+                .All()
+                .Where(x => x.Id == id)
+                .Select(ProjectDto.ToDto)
+                .FirstOrDefault()
+                .Members;
+
+            return Ok(foundMembers);
         }
     }
 }

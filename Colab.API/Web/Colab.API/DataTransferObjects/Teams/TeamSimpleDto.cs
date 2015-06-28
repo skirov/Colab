@@ -5,6 +5,7 @@
     using System.Runtime.Serialization;
 
     using Colab.Models;
+    using Colab.API.DataTransferObjects.Projects;
 
     [DataContract]
     public class TeamSimpleDto
@@ -18,7 +19,8 @@
                     Id = team.Id,
                     Title = team.Title,
                     ProjectId = team.ProjectId,
-                    Description = team.Description
+                    Description = team.Description,
+                    CreatorId = team.CreatorId
                 };
             }
         }
@@ -32,7 +34,13 @@
         [DataMember(Name = "description")]
         public string Description { get; set; }
 
+        [DataMember(Name = "creatorId")]
+        public string CreatorId { get; set; }
+
         [DataMember(Name = "projectId")]
         public int ProjectId { get; set; }
+
+        [DataMember(Name = "project")]
+        public ProjectDto Project { get; set; }
     }
 }

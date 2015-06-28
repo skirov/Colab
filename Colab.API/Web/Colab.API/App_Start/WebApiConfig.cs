@@ -18,7 +18,12 @@
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApiWithActionName",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{id}/{action}",
+                defaults: new { id = RouteParameter.Optional });
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional });
         }
     }

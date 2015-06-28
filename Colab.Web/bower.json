@@ -1,33 +1,17 @@
 {
-  "name": "Colab",
-  "version": "0.0.1",
-  "authors": [
-    "Stoyan Kirov <stoian.kiroff@gmail.com>"
-  ],
-  "description": "Collaboration web platform",
-  "main": [
-    "index2.html",
-    "dist/css/Colab.css",
-    "dist/js/app.js",
-    "build/less/Colab.less"
-  ],
-  "keywords": [
-    "css",
-    "js",
-    "html",
-    "template",
-    "admin",
-    "bootstrap",
-    "theme",
-    "backend",
-    "responsive"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "/.*",
-    "node_modules",
-    "bower_components",
-    "composer.json",
-    "documentation"
-  ]
+  "name": "colab",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "components-bootstrap": "~3.1.1",
+    "crossroads": "~0.12.0",
+    "hasher": "~1.2.0",
+    "requirejs": "~2.1.11",
+    "requirejs-text": "~2.0.10",
+    "knockout": "~3.3.0-alpha",
+    "knockout-projections": "~1.1.0"
+  },
+  "resolutions": {
+    "knockout": "~3.3.0-alpha"
+  }
 }

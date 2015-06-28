@@ -42,14 +42,12 @@
                         Teams = team.Project.Teams.AsQueryable().Select(TeamSimpleDto.ToDto),
                         Members = team.Project.Members.AsQueryable().Select(UserDto.ToDto)
                     },
+                    ProjectId = team.ProjectId,
                     Issues = team.Issues.AsQueryable().Select(IssueDto.ToDto),
                     Members = team.Members.AsQueryable().Select(UserDto.ToDto)
                 };
             }
         }
-
-        [DataMember(Name = "project")]
-        public ProjectDto Project { get; set; }
 
         [DataMember(Name = "issues")]
         public IEnumerable<IssueDto> Issues { get; set; }
