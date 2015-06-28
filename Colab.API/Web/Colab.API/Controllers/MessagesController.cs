@@ -15,11 +15,13 @@
         {
         }
 
+        [HttpPost]
         public IHttpActionResult Send([FromBody]object inputModel)
         {
             return this.Ok();
         }
 
+        [HttpGet]
         public IHttpActionResult AllRecivedMessages()
         {
             var currentUserId = this.User.Identity.GetUserId();
@@ -34,6 +36,7 @@
             return this.Ok(messages);
         }
 
+        [HttpGet]
         public IHttpActionResult AllSentMessages()
         {
             var currentUserId = this.User.Identity.GetUserId();
