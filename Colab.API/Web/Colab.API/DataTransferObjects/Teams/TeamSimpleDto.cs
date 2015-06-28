@@ -4,8 +4,8 @@
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
 
-    using Colab.Models;
     using Colab.API.DataTransferObjects.Projects;
+    using Colab.Models;
 
     [DataContract]
     public class TeamSimpleDto

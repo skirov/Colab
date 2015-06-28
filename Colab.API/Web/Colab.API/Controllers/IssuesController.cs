@@ -30,8 +30,8 @@
             this.Data.Issues.Add(newIssue);
             this.Data.SaveChanges();
 
-
-            return Ok(new {
+            return this.Ok(new 
+            {
                 teamId = issue.TeamId,
                 issueId = newIssue.Id
             });

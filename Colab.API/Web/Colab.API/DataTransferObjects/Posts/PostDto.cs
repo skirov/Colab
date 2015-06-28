@@ -1,18 +1,15 @@
-﻿using Colab.API.DataTransferObjects.Users;
-using Colab.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.Serialization;
-using System.Web;
-
-namespace Colab.API.DataTransferObjects.Posts
+﻿namespace Colab.API.DataTransferObjects.Posts
 {
+    using System;
+    using System.Linq.Expressions;
+    using System.Runtime.Serialization;
+
+    using Colab.API.DataTransferObjects.Users;
+    using Colab.Models;
+
     [DataContract]
     public class PostDto
     {
-
         public static new Expression<Func<Post, PostDto>> ToDto
         {
             get

@@ -9,7 +9,6 @@
     using Colab.API.DataTransferObjects.Teams;
     using Colab.API.DataTransferObjects.Users;
     using Colab.Models;
-    using Colab.API.DataTransferObjects.Feeds;
 
     [DataContract]
     public class ProjectDto : ProjectSimpleDto

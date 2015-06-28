@@ -4,8 +4,8 @@
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
 
-    using Colab.Models;
     using Colab.API.DataTransferObjects.Users;
+    using Colab.Models;
 
     [DataContract]
     public class IssueDto

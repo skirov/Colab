@@ -3,14 +3,12 @@
     using System.Linq;
     using System.Web.Http;
 
-    using Colab.API.DataTransferObjects.Projects;
     using Colab.API.DataTransferObjects.Teams;
+    using Colab.API.DataTransferObjects.Users;
     using Colab.Data;
     using Colab.Models;
 
     using Microsoft.AspNet.Identity;
-    using System.Collections.Generic;
-    using Colab.API.DataTransferObjects.Users;
 
     public class TeamController : BaseApiController
     {
@@ -75,7 +73,7 @@
             this.Data.Teams.Update(team);
             this.Data.SaveChanges();
 
-            return Ok();
+            return this.Ok();
         }
 
         [HttpGet]
@@ -88,7 +86,7 @@
                 .FirstOrDefault()
                 .Members;
 
-            return Ok(foundMembers);
+            return this.Ok(foundMembers);
         }
     }
 }

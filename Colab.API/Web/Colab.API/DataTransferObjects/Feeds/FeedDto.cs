@@ -1,12 +1,13 @@
 ﻿namespace Colab.API.DataTransferObjects.Feeds
 {
-    using Colab.API.DataTransferObjects.Posts;
-    using Colab.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
+
+    using Colab.API.DataTransferObjects.Posts;
+    using Colab.Models;
 
     [DataContract]
     public class FeedDto

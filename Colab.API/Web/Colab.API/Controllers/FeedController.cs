@@ -1,12 +1,10 @@
 ﻿namespace Colab.API.Controllers
 {
-    using System.Linq;
     using System.Web.Http;
 
-    using Colab.API.DataTransferObjects.Feeds;
+    using Colab.API.DataTransferObjects.Posts;
     using Colab.Data;
     using Colab.Models;
-    using Colab.API.DataTransferObjects.Posts;
 
     using Microsoft.AspNet.Identity;
 
@@ -28,7 +26,7 @@
                 CreatorId = currentUserId
             };
 
-            return Ok();
+            return this.Ok();
         }
     }
 }

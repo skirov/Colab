@@ -4,11 +4,11 @@
     using System.Web.Http;
 
     using Colab.API.DataTransferObjects.Projects;
+    using Colab.API.DataTransferObjects.Users;
     using Colab.Data;
     using Colab.Models;
 
     using Microsoft.AspNet.Identity;
-    using Colab.API.DataTransferObjects.Users;
 
     [Authorize]
     public class ProjectController : BaseApiController
@@ -73,7 +73,7 @@
             this.Data.Projects.Update(project);
             this.Data.SaveChanges();
 
-            return Ok();
+            return this.Ok();
         }
 
         [HttpGet]
@@ -86,7 +86,7 @@
                 .FirstOrDefault()
                 .Members;
 
-            return Ok(foundMembers);
+            return this.Ok(foundMembers);
         }
     }
 }
