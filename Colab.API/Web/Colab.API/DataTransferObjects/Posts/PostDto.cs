@@ -22,7 +22,7 @@
                     {
                         Id = post.Creator.Id,
                         UserName = post.Creator.UserName
-                    },
+                    }
                 };
             }
         }

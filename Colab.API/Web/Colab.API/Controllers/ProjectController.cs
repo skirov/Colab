@@ -1,6 +1,5 @@
 ﻿namespace Colab.API.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
 
@@ -31,6 +30,7 @@
                 Description = project.Description,
                 CreatorId = currentUserId
             };
+
             newProject.Members.Add(firstProjectMember);
 
             this.Data.Projects.Add(newProject);
