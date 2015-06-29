@@ -11,12 +11,21 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     return new Router({
         routes: [
-            { url: '',     params: { page: 'login' } },
-            { url: 'dashboard',     params: { page: 'dashboard' } },
-            { url: 'about',     params: { page: 'about-page' } },
-            { url: 'register',     params: { page: 'register' } },
-            { url: 'team',     params: { page: 'team' } },
-            { url: 'feed',     params: { page: 'feed' } }
+            { url: '',              params: { page: 'login', needLogin: false } },
+            { url: 'register',      params: { page: 'register', needLogin: false} },
+            { url: 'forgotten',     params: { page: 'forgotten', needLogin: false} },
+            { url: 'dashboard',     params: { page: 'dashboard', needLogin: true} },
+            { url: 'about',         params: { page: 'about-page', needLogin: true} },
+            { url: 'team',          params: { page: 'team', needLogin: true} },
+            { url: 'feed',          params: { page: 'feed', needLogin: true } },
+            { url: 'add-issue',     params: { page: 'add-issue', needLogin: true} },
+            { url: 'all-issues',    params: { page: 'all-issues', needLogin: true} },
+            { url: 'all-members',   params: { page: 'all-members', needLogin: true} },
+            { url: 'forgotten',     params: { page: 'forgotten', needLogin: true} },
+            { url: 'change-password', params: { page: 'change-password', needLogin: true} },
+            { url: 'all-messages',  params: { page: 'all-messages', needLogin: true} },
+            { url: 'read-message',  params: { page: 'road-message', needLogin: true} },
+            { url: 'new-message',   params: { page: 'new-message', needLogin: true} }
         ]
     });
 

@@ -10,19 +10,41 @@
     <link href="bower_modules/fontawesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="bower_modules/icheck/skins/square/blue.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/skin-blue.min.css" rel="stylesheet">
     <!-- endbuild -->
     <!-- build:js -->
     <script src="app/require.config.js"></script>
     <script data-main="app/startup" src="bower_modules/requirejs/require.js"></script>
     <!-- endbuild -->
 </head>
-<body id="main-app">
-    {{#if: isUserLogged}}
-        <div data-bind="component: { name: 'main' }">
+<body class="skin-blue sidebar-mini" id="main-app">
+    {{#if: isUserLogged && route().needLogin}}
+        <div class="wrapper">
+            <header class="main-header" data-bind="component: { name: 'top-menu' }">
+            </header>
+
+            <aside class="main-sidebar" data-bind="component: { name: 'left-sidebar' }">
+            </aside>
+
+            <div id="page" class="content-wrapper" data-bind="component: { name: route().page, params: route }">
+            </div>
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    Anything you want
+                </div>
+
+                <strong>Copyright &copy; 2015 <a href="#">Colab</a>.</strong> All rights reserved.
+            </footer>
+
+            <aside class="control-sidebar control-sidebar-dark" data-bind="component: { name: 'right-sidebar' }">
+            </aside >
+
+            <div class='control-sidebar-bg'></div>
         </div>
     {{/if}}
 
-    {{#ifnot: isUserLogged}}
+    {{#if: !isUserLogged && !route().needLogin}}
         <div data-bind="component: { name: route().page }">
         </div>
     {{/if}}

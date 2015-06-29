@@ -1,6 +1,6 @@
-define(['knockout', 'text!./register.html', 'icheck'], function (ko, templateMarkup, iCheck) {
+define(['knockout', 'text!./forgotten.html'], function (ko, templateMarkup) {
 
-    function Register(params) {
+    function Forgotten(params) {
         $(document).ready(function () {
             $('body').addClass('login-page');
         });
@@ -14,9 +14,9 @@ define(['knockout', 'text!./register.html', 'icheck'], function (ko, templateMar
 
     // This runs when the component is torn down. Put here any logic necessary to clean up,
     // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-    Register.prototype.dispose = function () {
+    Forgotten.prototype.dispose = function () {
     };
 
-    return {viewModel: Register, template: templateMarkup};
+    return {viewModel: Forgotten, template: templateMarkup};
 
 });
