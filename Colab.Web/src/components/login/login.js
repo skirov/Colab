@@ -1,13 +1,23 @@
-define(['knockout', 'text!./login.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./login.html', 'jquery', 'icheck', 'punches'], function (ko, templateMarkup, $, iCheck, punches) {
 
-  function Login(params) {
-    this.message = ko.observable('Hello from the login component!');
-  }
+    function Login(params) {
+        punches.enableAll();
+        $(document).ready(function () {
+            $('body').addClass('login-page');
+        });
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  Login.prototype.dispose = function() { };
-  
-  return { viewModel: Login, template: templateMarkup };
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    }
+
+    // This runs when the component is torn down. Put here any logic necessary to clean up,
+    // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
+    Login.prototype.dispose = function () {
+    };
+
+    return {viewModel: Login, template: templateMarkup};
 
 });

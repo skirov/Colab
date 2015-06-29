@@ -15,10 +15,10 @@ var requireJsRuntimeConfig = vm.runInNewContext(fs.readFileSync('src/app/require
             requireLib: 'bower_modules/requirejs/require'
         },
         include: [
-            'requireLib',
-            'components/nav-bar/nav-bar',
-            'components/home-page/home',
-            'text!components/about-page/about.html'
+            'requireLib'
+            //'components/nav-bar/nav-bar',
+            //'components/home-page/home',
+            //'text!components/about-page/about.html'
         ],
         insertRequire: ['app/startup'],
         bundles: {
