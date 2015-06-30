@@ -259,7 +259,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="InputModels\IssueInputModel.cs" />
+    <Compile Include="InputModels\Issues\IssueInputModel.cs" />
     <Compile Include="Models\ExternalLoginViewModel.cs" />
     <Compile Include="Models\ManageInfoViewModel.cs" />
     <Compile Include="Models\SetPasswordBindingModel.cs" />

@@ -5,6 +5,7 @@
 
     using Colab.API.DataTransferObjects.Issues;
     using Colab.API.InputModels;
+    using Colab.API.InputModels.Issues;
     using Colab.Data;
     using Colab.Models;
 

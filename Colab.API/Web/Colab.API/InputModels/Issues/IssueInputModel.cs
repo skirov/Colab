@@ -1,4 +1,4 @@
-﻿namespace Colab.API.InputModels
+﻿namespace Colab.API.InputModels.Issues
 {
     using System.Runtime.Serialization;
 
