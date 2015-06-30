@@ -79,6 +79,26 @@
         }
 
         [HttpGet]
+        public IHttpActionResult GetPosts(int id)
+        {
+            var project = this.Data.Projects
+                .All()
+                .FirstOrDefault(x => x.Id == id);
+
+            if (project == null)
+            {
+                return this.NotFound();
+            }
+
+            var posts = project.Posts
+                .AsQueryable()
+                .Select(PostDto.ToDto)
+                .ToList();
+
+            return this.Ok(posts);
+        }
+
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var project = this.Data.Projects
