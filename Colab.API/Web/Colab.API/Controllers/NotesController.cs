@@ -19,14 +19,23 @@
         [HttpPost]
         public IHttpActionResult Create([FromBody]NoteInputModel inputModel)
         {
-            return this.Ok();
+            var currentUserId = this.User.Identity.GetUserId();
+            var entity = inputModel.ToEntity();
+            entity.CreatorId = currentUserId;
+
+            this.Data.Notes.Add(entity);
+            this.Data.SaveChanges();
+
+            return this.Ok(entity);
         }
 
         [HttpGet]
         public IHttpActionResult GetAll()
         {
+            var currentUserId = this.User.Identity.GetUserId();
             var result = this.Data.Notes
                              .All()
+                             .Where(x => x.CreatorId == currentUserId)
                              .Select(NoteDto.ToDto)
                              .ToList();
 
