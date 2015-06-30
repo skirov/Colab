@@ -15,7 +15,14 @@ var require = {
         "punches":              "bower_modules/knockout.punches/knockout.punches.min",
 
         "layout-config":        "app/layout.config.min",
-        "require":              "app/require"
+        "request":              "services/request",
+
+        "authProvider":         "providers/auth",
+        "feedProvider":         "providers/feed",
+        "issueProvider":         "providers/issue",
+        "teamProvider":         "providers/team",
+        "userProvider":         "providers/user",
+        "noteProvider":         "providers/note"
     },
     shim: {
         "bootstrap": { deps: ["jquery"] }
