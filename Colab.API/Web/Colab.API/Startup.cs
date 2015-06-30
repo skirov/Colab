@@ -12,6 +12,7 @@ namespace Colab.API
     {
         public void Configuration(IAppBuilder app)
         {
+
             this.ConfigureAuth(app);
         }
     }
