@@ -1,6 +1,7 @@
 ﻿namespace Colab.API
 {
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
     using Microsoft.Owin.Security.OAuth;
 
@@ -8,7 +9,8 @@
     {
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
+            var cors = new EnableCorsAttribute("*", "*", "GET, POST, OPTIONS");
+            config.EnableCors(cors);
 
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.

@@ -29,7 +29,7 @@
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager userManager;
-
+         
         public AccountController()
         {
         }
