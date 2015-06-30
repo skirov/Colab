@@ -4,8 +4,11 @@
     using System.Web.Http;
 
     using Colab.API.DataTransferObjects.Issues;
+    using Colab.API.InputModels;
     using Colab.Data;
     using Colab.Models;
+
+    using Microsoft.AspNet.Identity;
 
     public class IssuesController : BaseApiController
     {
@@ -63,6 +66,49 @@
             }
 
             return this.Ok(issue);
+        }
+
+        [HttpPost]
+        public IHttpActionResult Update([FromBody]IssueInputModel inputModel)
+        {
+            var issueToUpdate = this.Data.Issues
+                .All()
+                .FirstOrDefault(x => x.Id == inputModel.Id);
+
+            if (issueToUpdate == null)
+            {
+                return this.NotFound();
+            }
+
+            inputModel.UpdateEntity(issueToUpdate);
+            this.Data.SaveChanges();
+
+            return this.Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var issueToDelte = this.Data.Issues
+                .All()
+                .FirstOrDefault(x => x.Id == id);
+
+            if (issueToDelte == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+
+            if (issueToDelte.ReporterId != currentUserId)
+            {
+                return this.Unauthorized();
+            }
+
+            this.Data.Issues.Delete(issueToDelte);
+            this.Data.SaveChanges();
+
+            return this.Ok();
         }
     }
 }
