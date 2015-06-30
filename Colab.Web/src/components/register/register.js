@@ -1,4 +1,5 @@
-define(['knockout', 'text!./register.html', 'icheck'], function (ko, templateMarkup, iCheck) {
+define(['knockout', 'text!./register.html', 'icheck', 'authProvider', 'crossroads'],
+    function (ko, templateMarkup, iCheck, AuthProvider, crossroads) {
 
     function Register(params) {
         $(document).ready(function () {
@@ -9,8 +10,24 @@ define(['knockout', 'text!./register.html', 'icheck'], function (ko, templateMar
             checkboxClass: 'icheckbox_square-blue',
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
-        });
+        });this.username = ko.observable();
+        this.password = ko.observable();
+        this.rememberMe = ko.observable();
     }
+
+    Register.prototype.register = function()
+    {
+        var that = this;
+
+        AuthProvider.register(this)
+            .done(function(data) {
+                debugger;
+                crossroads.parse('login');
+            })
+            .fail(function() {
+                alert("Unsuccessful registration")
+            });
+    };
 
     // This runs when the component is torn down. Put here any logic necessary to clean up,
     // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
