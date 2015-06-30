@@ -14,11 +14,11 @@
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Project title">
+                        <input type="text" class="form-control" placeholder="Project title" data-bind="value: newProjectTitle">
                     </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="pull-right btn btn-primary">Create</button>
+                    <button class="pull-right btn btn-primary" data-bind="click: createProject">Create</button>
                 </div>
             </div>
         </div>
