@@ -18,7 +18,7 @@
     <!-- endbuild -->
 </head>
 <body class="skin-blue sidebar-mini" id="main-app">
-    {{#if: isUserLogged && route().needLogin}}
+    {{#if: route().needLogin}}
         <div class="wrapper">
             <header class="main-header" data-bind="component: { name: 'top-menu' }">
             </header>
@@ -44,7 +44,7 @@
         </div>
     {{/if}}
 
-    {{#if: !isUserLogged && !route().needLogin}}
+    {{#if: !route().needLogin}}
         <div data-bind="component: { name: route().page }">
         </div>
     {{/if}}

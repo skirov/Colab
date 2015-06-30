@@ -14,6 +14,7 @@ var require = {
         "text":                 "bower_modules/requirejs-text/text",
         "punches":              "bower_modules/knockout.punches/knockout.punches.min",
         "ko-validation":        "bower_modules/Knockout-Validation/Src/knockout.validation.js",
+        "moment":               "bower_modules/momentjs/min/moment.min",
 
         "layout-config":        "app/layout.config.min",
         "request":              "services/request",

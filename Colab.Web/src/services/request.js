@@ -2,14 +2,32 @@ define(['jquery', 'session'], function($, Session) {
     var baseUrl = "http://localhost:1250/api";
 
     var get = function (url, data) {
+            var headers = {},
+                token = Session.getItem('access_token'),
+                baseUrl = "http://localhost:1250/api";
+
+            headers = {
+                "Content-Type" : "application/json"
+            };
+
+            if(token) {
+                headers["Authorization"] = "Bearer " + token
+            }
+
             var deferred = $.Deferred();
             $.ajax({
                 url: baseUrl + url,
                 type: "get",
-                contentType: 'application/json',
+                headers: headers,
                 data: data,
                 success: function (r) {
                     return deferred.resolve(r);
+                },
+                error: function (r) {
+                    if(r.status == '401') {
+                        Session.clear();
+                        window.location.href = '/#login';
+                    }
                 }
             });
             return deferred;
@@ -42,6 +60,12 @@ define(['jquery', 'session'], function($, Session) {
                 data: data,
                 success: function (r) {
                     return deferred.resolve(r);
+                },
+                error: function (r) {
+                    if(r.status == '401') {
+                        Session.clear();
+                        window.location.href = '/#login';
+                    }
                 }
             });
             return deferred;

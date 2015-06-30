@@ -23,8 +23,6 @@ define(['knockout', 'text!./login.html', 'jquery', 'icheck', 'crossroads', 'auth
 
         AuthProvider.login(that)
             .done(function(data) {
-                isUserLogged = true;
-                debugger;
                 Session.setItem('access_token', data.access_token);
                 window.location.href = '/#dashboard';
             })

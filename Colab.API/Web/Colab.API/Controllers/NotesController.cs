@@ -43,9 +43,9 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete([FromBody]NoteDto inputModel)
         {
-            var note = this.Data.Notes.All().FirstOrDefault(x => x.Id == id);
+            var note = this.Data.Notes.All().FirstOrDefault(x => x.Id == inputModel.Id);
             if (note == null)
             {
                 return this.NotFound();

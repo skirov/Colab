@@ -11,7 +11,6 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     return new Router({
         routes: [
-            { url: '',              params: { page: 'login', needLogin: false } },
             { url: 'login',              params: { page: 'login', needLogin: false } },
             { url: 'register',      params: { page: 'register', needLogin: false} },
             { url: 'forgotten',     params: { page: 'forgotten', needLogin: false} },
@@ -35,6 +34,9 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
         ko.utils.arrayForEach(config.routes, function(route) {
             crossroads.addRoute(route.url, function(requestParams) {
+                currentRoute(ko.utils.extend(requestParams, route.params));
+            });
+            crossroads.addRoute(route.url + '/{id}', function(requestParams) {
                 currentRoute(ko.utils.extend(requestParams, route.params));
             });
         });

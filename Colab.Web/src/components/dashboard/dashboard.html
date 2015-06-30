@@ -83,33 +83,23 @@
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Title">
+                        <input type="text" class="form-control" placeholder="Title" data-bind="value: noteTitle">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="4" placeholder="Note description"></textarea>
+                        <textarea class="form-control" rows="4" placeholder="Note description" data-bind="value: noteBody"></textarea>
                     </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="pull-right btn btn-primary">Submit</button>
+                    <button class="pull-right btn btn-primary" data-bind="click: createNote">Submit</button>
                 </div>
             </div>
         </div>
 
-        <div class="col-xs-8">
+        <div class="col-xs-8" data-bind="foreach: notes">
             <div class="alert alert-warning alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4>Note title</h4>
-                Note description
-            </div>
-            <div class="alert alert-warning alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4>Note title</h4>
-                Note description
-            </div>
-            <div class="alert alert-warning alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4>Note title</h4>
-                Note description
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-bind="click: $parent.deleteNote.bind($data, $data.id)">×</button>
+                <h4>{{$data.title}}</h4>
+                {{$data.body}}
             </div>
         </div>
     </div>

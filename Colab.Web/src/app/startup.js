@@ -49,5 +49,3 @@ define(['jquery', 'knockout', './router', 'punches', 'layout-config', 'bootstrap
     punches.enableAll();
     ko.applyBindings({route: router.currentRoute});
 });
-
-var isUserLogged = !!localStorage.getItem('access_token');

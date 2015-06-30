@@ -40,12 +40,12 @@
             return this.Ok(newProject.Id);
         }
 
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult AddPost([FromBody]PostDto post)
         {
             var project = this.Data.Projects
                 .All()
-                .FirstOrDefault(x => x.Id == post.Id);
+                .FirstOrDefault(x => x.Id == post.ProjectId);
 
             if (project == null)
             {
@@ -53,6 +53,7 @@
             }
 
             var currentUserId = this.User.Identity.GetUserId();
+            var currentUser = this.Data.Users.GetById(currentUserId);
 
             var newPost = new Post
             {
@@ -64,7 +65,17 @@
             this.Data.Posts.Add(newPost);
             this.Data.SaveChanges();
 
-            return this.Ok();
+            return this.Ok(new PostDto
+            {
+                Body = newPost.Body,
+                CreatorId = newPost.CreatorId,
+                ProjectId = newPost.ProjectId,
+                Creator = new UserDto
+                {
+                    Id = currentUser.Id,
+                    UserName = currentUser.UserName
+                }
+            });
         }
 
         [HttpGet]

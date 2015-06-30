@@ -26,6 +26,7 @@
                     Id = project.Id,
                     Title = project.Title,
                     Description = project.Description,
+                    CreatedOn = project.CreatedOn,
                     Teams = project.Teams.AsQueryable().Select(TeamSimpleDto.ToDto),
                 };
             }
@@ -39,6 +40,9 @@
 
         [DataMember(Name = "description")]
         public string Description { get; set; }
+
+        [DataMember(Name = "createdOn")]
+        public DateTime CreatedOn { get; set; }
 
         [DataMember(Name = "teams")]
         public IEnumerable<TeamSimpleDto> Teams { get; set; }
