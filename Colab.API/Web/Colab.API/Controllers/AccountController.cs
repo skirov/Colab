@@ -15,6 +15,8 @@
     using Colab.API.Results;
     using Colab.Models;
 
+    using CorsApi;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
