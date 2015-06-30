@@ -1,6 +1,5 @@
 define(['jquery', 'request', 'knockout'], function($, Request, ko) {
     function AuthProvider(params) {
-
     }
 
     AuthProvider.prototype.login = function(data) {
@@ -9,8 +8,9 @@ define(['jquery', 'request', 'knockout'], function($, Request, ko) {
 
         params.username = ko.unwrap(data.username);
         params.password = ko.unwrap(data.password);
+        params.grant_type = 'password';
 
-        Request.post('/account/login', ko.toJSON(params))
+        Request.post('/token', ko.toJSON(params))
             .done(function(r) {
                 deferred.resolve(r);
             })
@@ -25,12 +25,12 @@ define(['jquery', 'request', 'knockout'], function($, Request, ko) {
         var deferred = $.Deferred(),
             params = {};
 
-        params.username = ko.unwrap(data.username);
+        params.email = ko.unwrap(data.username);
         params.password = ko.unwrap(data.password);
         params.confirmPassword = ko.unwrap(data.confirmPassword);
 
         Request.post('/account/register', ko.toJSON(params))
-            .done(function(r) {debugger
+            .done(function(r) {
                 deferred.resolve(r);
             })
             .fail(function(r) {

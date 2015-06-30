@@ -13,9 +13,11 @@ var require = {
         "signals":              "bower_modules/js-signals/dist/signals.min",
         "text":                 "bower_modules/requirejs-text/text",
         "punches":              "bower_modules/knockout.punches/knockout.punches.min",
+        "ko-validation":        "bower_modules/Knockout-Validation/Src/knockout.validation.js",
 
         "layout-config":        "app/layout.config.min",
         "request":              "services/request",
+        "session":              "services/session",
 
         "authProvider":         "providers/auth",
         "feedProvider":         "providers/feed",

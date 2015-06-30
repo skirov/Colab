@@ -15,7 +15,8 @@
     "icheck": "~1.0.1",
     "knockout.punches": "latest",
     "jqueryui": "~1.10.3",
-    "extend.js": "latest"
+    "extend.js": "latest",
+    "Knockout-Validation": "latest"
   },
   "resolutions": {
     "knockout": "~3.3.0-alpha"

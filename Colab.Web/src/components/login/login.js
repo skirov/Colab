@@ -1,5 +1,5 @@
-define(['knockout', 'text!./login.html', 'jquery', 'icheck', 'crossroads', 'authProvider'],
-    function (ko, templateMarkup, $, iCheck, crossroads, AuthProvider) {
+define(['knockout', 'text!./login.html', 'jquery', 'icheck', 'crossroads', 'authProvider', 'session'],
+    function (ko, templateMarkup, $, iCheck, crossroads, AuthProvider, Session) {
 
     function Login(params) {
         $(document).ready(function () {
@@ -21,10 +21,12 @@ define(['knockout', 'text!./login.html', 'jquery', 'icheck', 'crossroads', 'auth
     {
         var that = this;
 
-        AuthProvider.login(this)
+        AuthProvider.login(that)
             .done(function(data) {
+                isUserLogged = true;
                 debugger;
-                crossroads.parse('dashboard');
+                Session.setItem('access_token', data.access_token);
+                window.location.href = '/#dashboard';
             })
             .fail(function() {
                 alert("Unsuccessful login")

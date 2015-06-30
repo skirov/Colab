@@ -16,7 +16,7 @@ define(['knockout', 'text!./register.html', 'icheck', 'authProvider', 'crossroad
         this.password = ko.observable();
         this.confirmPassword = ko.observable();
         this.iAgree = ko.observable();
-    }
+    };
 
     Register.prototype.register = function()
     {
@@ -24,8 +24,8 @@ define(['knockout', 'text!./register.html', 'icheck', 'authProvider', 'crossroad
 
         AuthProvider.register(that)
             .done(function(data) {
-                debugger;
-                crossroads.parse('login');
+                alert('User successfully created');
+                window.location.href  = '/#login';
             })
             .fail(function() {
                 alert("Unsuccessful registration")
