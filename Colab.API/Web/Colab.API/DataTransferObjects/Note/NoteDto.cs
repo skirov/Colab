@@ -1,10 +1,10 @@
 ﻿namespace Colab.API.DataTransferObjects.Note
 {
+    using System;
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
 
     using Colab.Models;
-    using System;
 
     [DataContract]
     public class NoteDto

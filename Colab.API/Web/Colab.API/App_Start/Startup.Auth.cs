@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using Owin;
-using Colab.API.Providers;
-
-namespace CorsApi
+﻿namespace CorsApi
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     using Colab.API;
+    using Colab.API.Providers;
     using Colab.Data;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.Owin;
+    using Microsoft.Owin.Security.Cookies;
+    using Microsoft.Owin.Security.OAuth;
+
+    using Owin;
 
     public partial class Startup
     {
@@ -60,23 +62,23 @@ namespace CorsApi
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
 
-            //// Enable CORS
-            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            ////// Enable CORS
+            ////app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //// Uncomment the following lines to enable logging in with third party login providers
+            ////app.UseMicrosoftAccountAuthentication(
+            ////    clientId: "",
+            ////    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            ////app.UseTwitterAuthentication(
+            ////    consumerKey: "",
+            ////    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            ////app.UseFacebookAuthentication(
+            ////    appId: "",
+            ////    appSecret: "");
 
-            //app.UseGoogleAuthentication();
+            ////app.UseGoogleAuthentication();
         }
     }
 }

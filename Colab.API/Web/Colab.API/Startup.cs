@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Owin;
-using Owin;
-using Microsoft.Owin.Cors;
-using System.Web.Cors;
 using System.Threading.Tasks;
+using System.Web.Cors;
+
+using Microsoft.Owin;
+using Microsoft.Owin.Cors;
+
+using Owin;
 
 [assembly: OwinStartup(typeof(CorsApi.Startup))]
 

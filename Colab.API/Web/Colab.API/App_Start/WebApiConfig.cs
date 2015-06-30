@@ -9,11 +9,10 @@
     {
         public static void Register(HttpConfiguration config)
         {
-            //var cors = new EnableCorsAttribute("*", "*", "*");
-            //config.EnableCors(new EnableCorsAttribute("*", "", ""));
-            //var cors = new EnableCorsAttribute("http://localhost:8080", "*", "*");
+            ////var cors = new EnableCorsAttribute("*", "*", "*");
+            ////config.EnableCors(new EnableCorsAttribute("*", "", ""));
+            ////var cors = new EnableCorsAttribute("http://localhost:8080", "*", "*");
             config.EnableCors();
-
 
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
