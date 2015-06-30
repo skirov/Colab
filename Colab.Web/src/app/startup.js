@@ -50,4 +50,4 @@ define(['jquery', 'knockout', './router', 'punches', 'layout-config', 'bootstrap
     ko.applyBindings({route: router.currentRoute});
 });
 
-var isUserLogged = true;
+var isUserLogged = false;

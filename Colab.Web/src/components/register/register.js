@@ -10,16 +10,19 @@ define(['knockout', 'text!./register.html', 'icheck', 'authProvider', 'crossroad
             checkboxClass: 'icheckbox_square-blue',
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
-        });this.username = ko.observable();
+        });
+
+        this.username = ko.observable();
         this.password = ko.observable();
-        this.rememberMe = ko.observable();
+        this.confirmPassword = ko.observable();
+        this.iAgree = ko.observable();
     }
 
     Register.prototype.register = function()
     {
         var that = this;
 
-        AuthProvider.register(this)
+        AuthProvider.register(that)
             .done(function(data) {
                 debugger;
                 crossroads.parse('login');
