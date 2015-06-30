@@ -20,7 +20,6 @@ define(['jquery'], function($) {
                 baseUrl = "http://localhost:1250";
             }
 
-            
             var deferred = $.Deferred();
             $.ajax({
                 url: baseUrl + url,
