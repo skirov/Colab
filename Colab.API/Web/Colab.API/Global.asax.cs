@@ -1,6 +1,7 @@
 ﻿namespace Colab.API
 {
     using System.Data.Entity;
+    using System.Linq;
     using System.Web;
     using System.Web.Http;
     using System.Web.Mvc;
@@ -21,6 +22,14 @@
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_BeginRequest()
+        {
+            if (this.Request.Headers.AllKeys.Contains("Origin") && this.Request.HttpMethod == "OPTIONS")
+            {
+                this.Response.Flush();
+            }
         }
     }
 }

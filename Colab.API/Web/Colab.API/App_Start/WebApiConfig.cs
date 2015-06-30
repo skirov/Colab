@@ -10,9 +10,9 @@
         public static void Register(HttpConfiguration config)
         {
             //var cors = new EnableCorsAttribute("*", "*", "*");
-            //config.EnableCors();
             //config.EnableCors(new EnableCorsAttribute("*", "", ""));
-
+            //var cors = new EnableCorsAttribute("http://localhost:8080", "*", "*");
+            config.EnableCors();
 
 
             // Web API configuration and services
