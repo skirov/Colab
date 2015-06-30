@@ -15,8 +15,8 @@
 
         public virtual User Creator { get; set; }
 
-        public int FeedId { get; set; }
+        public int ProjectId { get; set; }
 
-        public virtual Feed Feed { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

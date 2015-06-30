@@ -10,11 +10,13 @@
     {
         private ICollection<Team> teams;
         private ICollection<User> members;
+        private ICollection<Post> posts;
 
         public Project()
         {
             this.teams = new HashSet<Team>();
             this.members = new HashSet<User>();
+            this.posts = new HashSet<Post>();
         }
 
         [Key]
@@ -30,10 +32,6 @@
         [InverseProperty("CreatedProjects")]
         public virtual User Creator { get; set; }
 
-        public int FeedId { get; set; }
-
-        public virtual Feed Feed { get; set; }
-
         public virtual ICollection<Team> Teams
         {
             get { return this.teams; }
@@ -45,6 +43,12 @@
         {
             get { return this.members; }
             set { this.members = value; }
+        }
+
+        public virtual ICollection<Post> Posts
+        {
+            get { return this.posts; }
+            set { this.posts = value; }
         }
     }
 }

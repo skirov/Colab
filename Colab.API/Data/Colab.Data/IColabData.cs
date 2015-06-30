@@ -10,8 +10,6 @@
 
     public interface IColabData : IDisposable
     {
-        IRepository<Feed> Feeds { get; }
-
         IRepository<Issue> Issues { get; }
 
         IRepository<Message> Messages { get; }

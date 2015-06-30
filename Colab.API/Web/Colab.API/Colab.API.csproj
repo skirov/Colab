@@ -247,7 +247,6 @@
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
-    <Compile Include="DataTransferObjects\Feeds\FeedDto.cs" />
     <Compile Include="DataTransferObjects\Issues\IssueDto.cs" />
     <Compile Include="DataTransferObjects\Messages\MessageDto.cs" />
     <Compile Include="DataTransferObjects\Posts\PostDto.cs" />

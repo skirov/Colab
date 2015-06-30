@@ -27,11 +27,6 @@
             this.context = context;
         }
 
-        public IRepository<Feed> Feeds
-        {
-            get { return this.GetRepository<Feed>(); }
-        }
-
         public IRepository<Issue> Issues
         {
             get { return this.GetRepository<Issue>(); }

@@ -10,8 +10,6 @@
     {
         DbContext DbContext { get; }
 
-        IDbSet<Feed> Feeds { get; set; }
-
         IDbSet<Issue> Issues { get; set; }
 
         IDbSet<Message> Messages { get; set; }

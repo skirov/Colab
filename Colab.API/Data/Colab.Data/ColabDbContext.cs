@@ -18,8 +18,6 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ColabDbContext, DefaultMigrationConfiguration>());
         }
 
-        public virtual IDbSet<Feed> Feeds { get; set; }
-
         public virtual IDbSet<Issue> Issues { get; set; }
 
         public virtual IDbSet<Message> Messages { get; set; }
