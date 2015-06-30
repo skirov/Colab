@@ -24,7 +24,7 @@ define(['jquery'], function($) {
             $.ajax({
                 url: baseUrl + url,
                 type: "post",
-                contentType: 'application/json',
+                contentType: 'application/jsonp',
                 data: data,
                 success: function (r) {
                     return deferred.resolve(r);
