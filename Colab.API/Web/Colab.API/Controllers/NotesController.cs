@@ -4,7 +4,10 @@
     using System.Web.Http;
 
     using Colab.API.DataTransferObjects.Note;
+    using Colab.API.InputModels.Notes;
     using Colab.Data;
+
+    using Microsoft.AspNet.Identity;
 
     public class NotesController : BaseApiController
     {
@@ -14,7 +17,7 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Create()
+        public IHttpActionResult Create([FromBody]NoteInputModel inputModel)
         {
             return this.Ok();
         }
@@ -33,6 +36,21 @@
         [HttpPost]
         public IHttpActionResult Delete(int id)
         {
+            var note = this.Data.Notes.All().FirstOrDefault(x => x.Id == id);
+            if (note == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+            if (note.CreatorId != currentUserId)
+            {
+                return this.Unauthorized();
+            }
+
+            this.Data.Notes.Delete(note);
+            this.Data.SaveChanges();
+
             return this.Ok();
         }
     }

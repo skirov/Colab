@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
     using Colab.API.Models;
     using Colab.API.Providers;
@@ -23,6 +24,7 @@
 
     [Authorize]
     [RoutePrefix("api/Account")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
