@@ -20,5 +20,4 @@ define(['knockout', 'text!./left-sidebar.html', 'projectProvider'], function (ko
     };
 
     return {viewModel: LeftSidebar, template: templateMarkup};
-
 });
