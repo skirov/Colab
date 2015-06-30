@@ -105,5 +105,28 @@
 
             return this.Ok(team.Members);
         }
+
+        [HttpPost]
+        public IHttpActionResult Delete(int id)
+        {
+            var teamToDelete = this.Data.Teams.All().FirstOrDefault(x => x.Id == id);
+
+            if (teamToDelete == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+
+            if (teamToDelete.CreatorId != currentUserId)
+            {
+                return this.Unauthorized();
+            }
+
+            this.Data.Teams.Delete(teamToDelete);
+            this.Data.SaveChanges();
+
+            return this.Ok();
+        }
     }
 }

@@ -32,6 +32,9 @@
 
         [DataMember(Name = "body")]
         public string Body { get; set; }
+
+        [DataMember(Name = "projectId")]
+        public int ProjectId { get; set; }
         
         [DataMember(Name = "creator")]
         public UserDto Creator { get; set; }

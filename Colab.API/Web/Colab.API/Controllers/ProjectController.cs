@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Http;
 
+    using Colab.API.DataTransferObjects.Posts;
     using Colab.API.DataTransferObjects.Projects;
     using Colab.API.DataTransferObjects.Users;
     using Colab.Data;
@@ -37,6 +38,33 @@
             this.Data.SaveChanges();
 
             return this.Ok(newProject.Id);
+        }
+
+        [HttpGet]
+        public IHttpActionResult AddPost([FromBody]PostDto post)
+        {
+            var project = this.Data.Projects
+                .All()
+                .FirstOrDefault(x => x.Id == post.Id);
+
+            if (project == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+
+            var newPost = new Post
+            {
+                Body = post.Body,
+                CreatorId = currentUserId,
+                ProjectId = post.ProjectId
+            };
+
+            this.Data.Posts.Add(newPost);
+            this.Data.SaveChanges();
+
+            return this.Ok();
         }
 
         [HttpGet]
@@ -105,6 +133,31 @@
             }
 
             return this.NotFound();
+        }
+
+        [HttpPost]
+        public IHttpActionResult Delete(int id)
+        {
+            var projectToDelete = this.Data.Projects
+                .All()
+                .FirstOrDefault(x => x.Id == id);
+
+            if (projectToDelete == null)
+            {
+                return this.NotFound();
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+
+            if (projectToDelete.CreatorId != currentUserId)
+            {
+                return this.Unauthorized();
+            }
+
+            this.Data.Projects.Delete(projectToDelete);
+            this.Data.SaveChanges();
+
+            return this.Ok();
         }
     }
 }

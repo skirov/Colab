@@ -4,6 +4,7 @@
 
     using Colab.Models;
 
+    [DataContract]
     public class IssueInputModel
     {
         [DataMember(Name = "id")]
