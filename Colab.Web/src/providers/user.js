@@ -1,8 +1,19 @@
-define(['jquery', 'request', 'knockout'], function($, Request, ko) {
+define(['jquery', 'request', 'knockout', 'session'], function($, Request, ko, Session) {
     function UserProvider(params) {
     }
 
-    UserProvider.prototype.get = function(id) {
+    UserProvider.prototype.get = function() {
+        var deferred = $.Deferred();
+
+        Request.get('/Account/UserInfo')
+            .done(function(r) {
+                deferred.resolve(r);
+            })
+            .fail(function(r) {
+                deferred.reject(r);
+            });
+
+        return deferred.promise();
     };
 
     UserProvider.prototype.getAll = function() {
@@ -11,7 +22,9 @@ define(['jquery', 'request', 'knockout'], function($, Request, ko) {
     UserProvider.prototype.create = function() {
     };
 
-    UserProvider.prototype.delete = function() {
+    UserProvider.prototype.logout = function() {
+        Session.clear();
+        window.location.href= '/#login';
     };
 
     UserProvider.prototype.update = function() {

@@ -1,13 +1,27 @@
-define(['knockout', 'text!./add-issue.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./add-issue.html', 'knockout', 'issueProvider'], function (ko, templateMarkup, ko, IssueProvider) {
 
-  function AddIssue(params) {
-    this.message = ko.observable('Hello from the add-issue component!');
-  }
+    function AddIssue(params) {
+        var that = this;
 
-  // This runs when the component is torn down. Put here any logic necessary to clean up,
-  // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  AddIssue.prototype.dispose = function() { };
-  
-  return { viewModel: AddIssue, template: templateMarkup };
+        this.teamId = ko.observable(params.id);
+        this.title = ko.observable();
+        this.description = ko.observable();
+        this.status = ko.observable();
+        this.priority = ko.observable();
+        this.reporter = ko.observable();
+        this.assignee= ko.observable();
+    }
 
+    AddIssue.prototype.addIssue = function () {
+        var that = this;
+
+        IssueProvider.create(that)
+            .done(function (issue) {
+                alert("Issue successfully created.");
+
+                window.location.href = "/#team/" + issue.teamId;
+            });
+    };
+
+    return {viewModel: AddIssue, template: templateMarkup};
 });

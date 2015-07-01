@@ -16,7 +16,7 @@
                 return user => new UserDto
                 {
                     Id = user.Id,
-                    UserName = user.UserName
+                    UserName = user.UserName,
                 };
             }
         }
@@ -26,5 +26,8 @@
 
         [DataMember(Name = "username")]
         public string UserName { get; set; }
+
+        [DataMember(Name = "teamId")]
+        public int TeamId { get; set; }
     }
 }

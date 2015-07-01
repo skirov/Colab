@@ -67,15 +67,17 @@
         }
 
         [HttpPost]
-        public IHttpActionResult AddMember([FromBody]UserDto user, [FromUri]int id)
+        public IHttpActionResult AddMember([FromBody]UserDto user)
         {
-            var team = this.Data.Teams.GetById(id);
+            var team = this.Data.Teams.GetById(user.TeamId);
             if (team == null)
             {
                 return this.NotFound();
             }
 
-            var userToAdd = this.Data.Users.GetById(user.Id);
+            var userIdByEmail = this.Data.Users.All().FirstOrDefault(x => x.UserName == user.UserName).Id;
+
+            var userToAdd = this.Data.Users.GetById(userIdByEmail);
             if (userToAdd == null)
             {
                 return this.NotFound();
@@ -83,7 +85,6 @@
 
             team.Members.Add(userToAdd);
 
-            this.Data.Teams.Update(team);
             this.Data.SaveChanges();
 
             return this.Ok();

@@ -81,8 +81,12 @@
         [HttpGet]
         public IHttpActionResult GetAll()
         {
+
+            var currentUserId = this.User.Identity.GetUserId();
+            
             var projects = this.Data.Projects
                 .All()
+                .Where(x => x.CreatorId == currentUserId)
                 .Select(ProjectSimpleDto.ToDto)
                 .ToList();
 

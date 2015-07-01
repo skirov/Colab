@@ -17,6 +17,17 @@ define(['jquery', 'request', 'knockout'], function($, Request, ko) {
     };
 
     FeedProvider.prototype.getAll = function() {
+        var deferred = $.Deferred();
+
+        Request.get('/project/getAll')
+            .done(function(r) {
+                deferred.resolve(r);
+            })
+            .fail(function(r) {
+                deferred.reject(r);
+            });
+
+        return deferred.promise();
     };
 
     FeedProvider.prototype.addPost = function(data) {

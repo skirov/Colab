@@ -1,7 +1,16 @@
-define(['knockout', 'text!./all-members.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./all-members.html', 'teamProvider'], function(ko, templateMarkup, TeamProvider) {
 
   function AllMembers(params) {
-    this.message = ko.observable('Hello from the all-members component!');
+      var that = this;
+
+      that.isInitialized = ko.observable();
+      that.membersForTeam = ko.observableArray();
+
+      TeamProvider.getAllMembers(params.id)
+          .done(function (data) {
+              that.membersForTeam(data);
+              that.isInitialized(true);
+          });
   }
 
   // This runs when the component is torn down. Put here any logic necessary to clean up,

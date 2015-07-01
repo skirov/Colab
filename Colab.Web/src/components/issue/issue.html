@@ -1,0 +1,27 @@
+{{#if: isInitialized()}}
+<div class="col-md-12" style="padding: 30px;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Issue</h3>
+            <div class="box-tools pull-right">
+                <a href="/#issue/{{id - 1}}" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
+                <a href="/#issue/{{id + 1}}" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
+                <small><a href="/#team/{{teamId}}"><i class="fa fa-dashboard"></i> To team dashboard</a></small>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="mailbox-read-info">
+                <h3>{{$data.id}} - {{$data.title}}</h3>
+                <h5>From: {{reporter}} <span class="mailbox-read-time pull-right">{{createdOn}} - {{status}} - {{priority}}</span></h5>
+            </div><!-- /.mailbox-read-info -->
+            <div class="mailbox-read-message">
+                {{description}}
+            </div><!-- /.mailbox-read-message -->
+        </div><!-- /.box-body -->
+    </div><!-- /. box -->
+</div>
+{{/if}}
+
+{{#ifnot: isInitialized()}}
+<p style="padding-top: 50px; text-align: center;">Loading...</p>
+{{/if}}

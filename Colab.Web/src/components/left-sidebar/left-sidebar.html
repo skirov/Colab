@@ -12,15 +12,15 @@
         <li><a href="/#dashboard"><i class='fa fa-link'></i> <span>Dashboard</span></a></li>
 
         <li class="header">PROJECTS</li>
+        {{#foreach: projects}}
         <li class="active treeview">
-            <a href="project.html"><i class='fa fa-folder-open'></i> <span>Project 1</span></a>
-            <ul class="treeview-menu">
-                <li><a href="project.html"><i class="fa fa-circle-o"></i> Front-end team</a></li>
-                <li><a href="project.html"><i class="fa fa-circle-o"></i> Managers tem</a></li>
-            </ul>
+            <a href="/#feed/{{$data.id}}"><i class='fa fa-folder-open'></i> <span>{{$data.title}}</span></a>
+            {{#if: $data.teams.length}}
+                <ul class="treeview-menu" data-bind="foreach: $data.teams">
+                    <li><a href="/#team/{{$data.id}}"><i class="fa fa-circle-o"></i>{{$data.title}}</a></li>
+                </ul>
+            {{/if}}
         </li>
-        <li><a href="timeline.html"><i class='fa fa-folder-open'></i> <span>Project 2</span></a></li>
-        <li><a href="timeline.html"><i class='fa fa-folder-open'></i> <span>Project 3</span></a></li>
-        <li><a href="timeline.html"><i class='fa fa-folder-open'></i> <span>Project 4</span></a></li>
+        {{/foreach}}
     </ul>
 </section>

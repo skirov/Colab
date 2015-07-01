@@ -25,6 +25,8 @@
 
         public string AssigneeId { get; set; }
 
+        public string Description { get; set; }
+
         [InverseProperty("AssignedIssues")]
         public virtual User Assignee { get; set; }
 

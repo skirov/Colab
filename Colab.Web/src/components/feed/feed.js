@@ -1,4 +1,4 @@
-define(['knockout', 'text!./feed.html', 'feedProvider', 'moment'], function (ko, templateMarkup, FeedProvider, moment) {
+define(['knockout', 'text!./feed.html', 'feedProvider', 'teamProvider', 'moment'], function (ko, templateMarkup, FeedProvider, TeamProvider, moment) {
 
     function Feed(params) {
         var that = this;
@@ -12,6 +12,8 @@ define(['knockout', 'text!./feed.html', 'feedProvider', 'moment'], function (ko,
         that.creator = ko.observable();
 
         that.postBody = ko.observable();
+        that.teamTitle = ko.observable();
+        that.teamDescription = ko.observable();
 
         FeedProvider.get(params.id)
             .done(function (data) {
@@ -33,6 +35,17 @@ define(['knockout', 'text!./feed.html', 'feedProvider', 'moment'], function (ko,
                 that.postBody('');
                 post.createdOn = moment().format('LLL');
                 that.posts.unshift(post);
+            });
+    };
+
+    Feed.prototype.addTeam = function () {
+        var that = this;
+
+        TeamProvider.create(that)
+            .done(function (teamId) {
+                alert("Project successfully created.");
+
+                window.location.href = "/#team/" + teamId;
             });
     };
 

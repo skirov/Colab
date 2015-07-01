@@ -22,7 +22,7 @@ var require = {
 
         "authProvider":         "providers/auth",
         "feedProvider":         "providers/feed",
-        "issueProvider":         "providers/issue",
+        "issueProvider":        "providers/issue",
         "teamProvider":         "providers/team",
         "userProvider":         "providers/user",
         "noteProvider":         "providers/note"

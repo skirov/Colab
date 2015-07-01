@@ -21,14 +21,18 @@
         [HttpPost]
         public IHttpActionResult Create([FromBody]IssueDto issue)
         {
+            var reporterId = this.Data.Users.All().FirstOrDefault(x => x.UserName == issue.ReporterEmail).Id;
+            var assigneeId = this.Data.Users.All().FirstOrDefault(x => x.UserName == issue.AssigneeEmail).Id;
+
             var newIssue = new Issue
             {
                 Title = issue.Title,
                 Status = issue.Status,
                 Priority = issue.Priority,
                 TeamId = issue.TeamId,
-                ReporterId = issue.ReporterId,
-                AssigneeId = issue.AssigneeId
+                ReporterId = reporterId,
+                AssigneeId = assigneeId,
+                Description = issue.Description
             };
 
             this.Data.Issues.Add(newIssue);
@@ -42,10 +46,11 @@
         }
 
         [HttpGet]
-        public IHttpActionResult GetAll()
+        public IHttpActionResult GetAll(int id)
         {
             var projects = this.Data.Issues
                 .All()
+                .Where(x => x.TeamId == id)
                 .Select(IssueDto.ToDto)
                 .ToList();
 
@@ -60,6 +65,25 @@
                 .Where(x => x.Id == id)
                 .Select(IssueDto.ToDto)
                 .FirstOrDefault();
+
+            if (issue == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(issue);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetIssuesForUsers(int id)
+        {
+            var currentUserId = this.User.Identity.GetUserId();
+
+            var issue = this.Data.Issues
+                .All()
+                .Where((x => x.AssigneeId == currentUserId && x.TeamId == id))
+                .Select(IssueDto.ToDto)
+                .ToList();
 
             if (issue == null)
             {

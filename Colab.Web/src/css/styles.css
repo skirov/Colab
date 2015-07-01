@@ -2799,7 +2799,7 @@ table.text-center th {
  * ---------------------
  */
 .users-list > li {
-	width: 7%;
+	width: 15%;
 	float: left;
 	padding: 10px;
 	text-align: center;

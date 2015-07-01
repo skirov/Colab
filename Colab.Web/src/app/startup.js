@@ -43,9 +43,16 @@ define(['jquery', 'knockout', './router', 'punches', 'layout-config', 'bootstrap
 
     ko.components.register('new-message', {require: 'components/new-message/new-message'});
 
+    ko.components.register('issue', { require: 'components/issue/issue' });
+
+
+    ko.components.register('my-issues', { require: 'components/my-issues/my-issues' });
+
+
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
     // Start the application
     punches.enableAll();
     ko.applyBindings({route: router.currentRoute});
+
 });
